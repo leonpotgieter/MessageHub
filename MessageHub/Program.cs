@@ -41,7 +41,7 @@ namespace MessageHub
 
             if (MessageHub.Properties.Settings.Default.DefaultPort == "null")
             {
-                Console.WriteLine(DateTime.Now.ToShortTimeString() + "  " + "Please specify the service port to use (ie 8089)");
+                Console.WriteLine(String.Format("{0}  Please specify the service port to use (ie 8089)", DateTime.Now.ToShortTimeString()));
                 string p = Console.ReadLine();
                 MessageHub.Properties.Settings.Default.DefaultPort = p;
                 MessageHub.Properties.Settings.Default.Save();
@@ -57,7 +57,7 @@ namespace MessageHub
             dt = dt.AddDays(ver.Build);
             //ANOTHER (SHORTER) WAY OF COLLECTING THE DATA
             string versionString = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            versionString = ver.ToString() + " " + dt.ToShortDateString();
+            versionString = String.Format("{0} {1}", ver.ToString(), dt.ToShortDateString());
             //Console.WriteLine(DateTime.Now.ToShortTimeString() + "  " + "Core Services Version: " + versionString);
 
             string url = "http://*:" + MessageHub.Properties.Settings.Default.DefaultPort;
